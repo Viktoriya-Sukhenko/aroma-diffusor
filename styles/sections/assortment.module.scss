@@ -1,0 +1,145 @@
+@use "../variables" as *;
+
+.assortment {
+  text-align: center;
+  padding: 50px 20px 0;
+  background: $white;
+  position: relative;
+
+  .title {
+    font-size: clamp(24px, 5vw, 36px);
+    font-weight: 700;
+    margin-bottom: 50px;
+    color: $black;
+  }
+
+  .swiper {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 0 30px;
+    overflow: hidden;
+  }
+
+  .swiper-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .swiper-slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: auto !important;
+  }
+
+  .card {
+    width: 280px;
+    height: 360px;
+    background: var(--card-bg);
+    overflow: hidden;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    transform: scale(0.9);
+    margin: 0 auto;
+  }
+
+  .activeCard {
+    transform: scale(1.1);
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.2);
+    margin-bottom: 30px;
+  }
+
+  .cardImage {
+    width: 100%;
+    height: 50%;
+    background-size: cover;
+    background-position: center;
+    border-radius: 20px 20px 0 0;
+  }
+
+  .info {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .name {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: $white;
+  }
+
+  .description {
+    font-size: 16px;
+    font-weight: 400;
+    text-align: center;
+    max-width: 90%;
+    color: $white;
+    margin: 0;
+  }
+
+  .navContainer {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 30px;
+  }
+
+  .navButton {
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s;
+
+    &:hover {
+      transform: scale(1.2);
+    }
+
+    img {
+      width: 40px;
+    }
+  }
+}
+
+// 📱 Адаптація для планшетів (до 900px)
+@media (max-width: 900px) {
+  .assortment .swiper {
+    max-width: 90%;
+  }
+
+  .title {
+    font-size: 28px;
+  }
+}
+
+// 📱 Адаптація для мобільних (до 768px)
+@media (max-width: 768px) {
+  .assortment {
+    padding-top: 0 !important; // ❌ Забираємо верхній padding
+    margin-top: 0 !important; // ❌ Забираємо верхній margin
+  }
+
+  .title {
+    font-size: 24px;
+    margin-bottom: 30px; // Менший відступ між заголовком і контентом
+  }
+}
+
+// 📱 Адаптація для дуже маленьких мобільних (до 480px)
+@media (max-width: 480px) {
+  .title {
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+}

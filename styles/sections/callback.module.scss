@@ -1,0 +1,391 @@
+@use "sass:color";
+@use "../variables" as *;
+
+$input-width: 320px;
+
+.callback {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: url("/images/bckg4.png") no-repeat center center;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  padding: clamp(80px, 8vw, 150px) 0;
+
+  // 🛠 Фікс для iOS, щоб фон залишався статичним
+  @supports (-webkit-touch-callout: none) {
+    background-attachment: scroll;
+  }
+}
+
+// ✅ Верхній туман
+.fogTop {
+  position: absolute;
+  top: -50px;
+  left: 0;
+  width: 100vw;
+  height: 200px;
+  background: url("/images/bt2.png") no-repeat center top;
+  background-size: contain;
+  pointer-events: none;
+  z-index: 1;
+}
+
+// ✅ Нижній туман
+.fogBottom {
+  position: absolute;
+  bottom: -70px;
+  left: 0;
+  width: 100vw;
+  height: 200px;
+  background: url("/images/bb3.png") no-repeat center bottom;
+  background-size: contain;
+  pointer-events: none;
+  z-index: 1;
+}
+
+// ✅ Контейнер
+.container {
+  position: relative;
+  max-width: 900px;
+  width: 90%;
+  background: $white;
+  backdrop-filter: blur(10px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;  // Центрує дочірні елементи
+  justify-content: center; // Додає вертикальне центрування, якщо потрібно
+  gap: 20px;
+  padding: clamp(30px, 5vw, 50px);
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.1);
+  z-index: 2;
+  box-sizing: border-box;
+  text-align: center; // Центрує текст всередині
+  margin: 0 auto; // 📌 Центрує контейнер по горизонталі
+}
+
+
+// ✅ Заголовки
+.title {
+  font-size: clamp(24px, 1vw, 28px);
+  font-weight: 700;
+  color: $black;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.choiceBlock {
+  display: flex;
+  flex-direction: column;
+  align-items: center; // 📌 Центрує все всередині
+  width: 100%;
+  text-align: center;
+}
+
+
+.choiceTitle {
+  font-size: clamp(18px, 2.5vw, 20px);
+  font-weight: 600;
+  color: $black;
+  margin-bottom: 15px;
+}
+
+// ✅ Роздільник "АБО"
+.separator {
+  font-size: 16px;
+  font-weight: 500;
+  color: $black;
+  text-transform: uppercase;
+  margin: 15px 0;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    width: 40%;
+    height: 1px;
+    background: #ccc;
+  }
+
+  &::before {
+    left: 0;
+  }
+
+  &::after {
+    right: 0;
+  }
+}
+
+// Общие стили для всех инпутов
+.inputGroup, .inputTel {
+  position: relative;
+  width: $input-width; // 320px из переменной
+  height: 50px;
+  margin: 0 auto;
+  
+  input {
+    width: 100%;
+    height: 100%;
+    padding: 0 15px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    font-size: 16px;
+    font-family: 'Montserrat', sans-serif;
+    
+    &::placeholder {
+      color: rgba(0, 0, 0, 0.5);
+    }
+    
+    &:focus {
+      outline: none;
+      border-color: $yellow;
+    }
+  }
+}
+
+.inputTel {
+  width: $input-width;
+  font-family: 'Montserrat', sans-serif;
+  border: none;
+  background: transparent;
+  outline: none;
+  flex: 1;
+  font-size: 16px;
+  color: $black;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+
+// ✅ Кнопка
+.button {
+  width: $input-width;
+  height: clamp(45px, 6vw, 55px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  font-weight: 600;
+  border-radius: 8px;
+  background: $yellow;
+  cursor: pointer;
+  transition: 0.3s;
+  border: none;
+  color: $black;
+  margin: 0 auto;
+  box-sizing: border-box;
+
+  &:hover {
+    background: color.adjust($yellow, $lightness: -10%);
+  }
+
+  &:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+  }
+}
+
+
+.checkbox {
+  width: clamp(16px, 2.5vw, 20px);
+  height: clamp(16px, 2.5vw, 20px);
+  border: 2px solid rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  margin-right: 5px;
+  cursor: pointer;
+  appearance: none;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+
+  &:checked {
+    background-color: $yellow;
+    border-color: $yellow;
+  }
+
+  &:checked::after {
+    content: "✔";
+    font-size: clamp(10px, 1.8vw, 12px);
+    color: $white;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+// ✅ Соціальні чекбокси
+.socialCheckboxes {
+  display: flex;
+  justify-content: center;
+  gap: clamp(8px, 2vw, 15px);
+  margin: 15px 0;
+
+  label {
+    display: flex;
+    align-items: center;
+    font-size: clamp(12px, 2vw, 16px);
+    color: $black;
+    cursor: pointer;
+    gap: clamp(3px, 1vw, 5px);
+    white-space: nowrap;
+  }
+}
+
+// ✅ Чекбокс згоди
+.checkboxContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  font-size: 14px;
+  color: $black;
+  text-align: center;
+  max-width: 100%; // Запобігає розтягуванню
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  input {
+    @extend .checkbox;
+    flex-shrink: 0; // ✅ Чекбокс не буде стискатися
+  }
+
+  a {
+    color: $black;
+    text-decoration: underline;
+  }
+}
+
+// 📱 Адаптація для планшетів (768px-1024px)
+@media (max-width: 1024px) {
+  .container {
+    max-width: 80%;
+    padding: 40px;
+  }
+
+  .inputGroup, .button {
+    max-width: 80%;
+  }
+}
+
+// 📱 Адаптація для мобільних (до 768px)
+@media (max-width: 768px) {
+  .callback {
+    background: none; // ❌ Видаляємо фонове зображення
+    min-height: auto; // 📌 Прибираємо обов'язкову мінімальну висоту
+    padding: 40px 0; // ✅ Менший відступ зверху та знизу
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .fogTop {
+    display: none; // ❌ Приховуємо верхній туман
+  }
+
+  .container {
+    width: 100%;
+    max-width: 90%;
+    height: auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: $white;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 12px;
+  }
+}
+
+// 📱 Додаткові зміни для маленьких мобільних (до 480px)
+@media (max-width: 480px) {
+  .callback {
+    min-height: auto; // ✅ Мінімальна висота не перевищує контент
+    padding: 30px 0; // 📌 Ще зменшуємо відступи
+  }
+
+  .container {
+    width: 95%;
+    max-width: 380px;
+    padding: 15px;
+  }
+
+  .inputGroup, .inputTel {
+    width: 280px;
+    height: 45px;
+    
+    input {
+      font-size: 14px;
+    }
+  }
+
+  .title {
+    font-size: 20px;
+  }
+  
+  .checkboxContainer {
+    font-size: 7px; // Ще трохи зменшуємо шрифт для маленьких екранів
+  }
+
+  .checkbox {
+    width: clamp(14px, 2vw, 16px);
+    height: clamp(14px, 2vw, 16px);
+    border-width: 1.5px;
+
+    &:checked::after {
+      font-size: clamp(9px, 1.5vw, 10px);
+    }
+  }
+
+  .socialCheckboxes {
+    gap: 6px;
+    
+    label {
+      font-size: 11px;
+      gap: 2px;
+    }
+  }
+}
+
+@media (max-width: 360px) {
+  .inputGroup, .inputTel {
+    width: 260px;
+    height: 40px;
+    
+    input {
+      font-size: 13px;
+    }
+  }
+
+  .checkbox {
+    width: clamp(12px, 1.8vw, 14px);
+    height: clamp(12px, 1.8vw, 14px);
+    border-width: 1px;
+
+    &:checked::after {
+      font-size: clamp(8px, 1.2vw, 9px);
+    }
+  }
+
+  .socialCheckboxes {
+    gap: 4px;
+    
+    label {
+      font-size: 10px;
+    }
+  }
+}

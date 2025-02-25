@@ -1,0 +1,57 @@
+@use "../variables" as *;
+
+.footer {
+  position: relative; // ❌ Видаляємо `absolute`, щоб уникнути проблем з позиціонуванням
+  width: 100%;
+  padding: 20px 0;
+  text-align: center;
+  color: $black;
+  font-size: 14px;
+  z-index: 2; // ✅ Футер буде над туманом
+  background: $white; // Додаємо фон, щоб футер не зливався з фоном сторінки
+ 
+}
+
+.footer .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  flex-direction: column; // 📌 На мобільних контент футера має розташовуватись один під одним
+  align-items: center;
+  justify-content: center;
+}
+
+/* 📱 Адаптація для планшетів (768px - 1024px) */
+@media (max-width: 1024px) {
+  .footer {
+    padding: 15px 0;
+    font-size: 13px;
+  }
+
+  .footer .container {
+    max-width: 90%;
+    text-align: center;
+  }
+}
+
+/* 📱 Адаптація для мобільних (до 768px) */
+@media (max-width: 768px) {
+  .footer {
+    padding: 10px 0;
+    font-size: 12px;
+  }
+
+  .footer .container {
+    flex-direction: column;
+    gap: 5px;
+  }
+}
+
+/* 📱 Адаптація для дуже маленьких екранів (до 480px) */
+@media (max-width: 480px) {
+  .footer {
+    padding: 8px 0;
+    font-size: 11px;
+  }
+}

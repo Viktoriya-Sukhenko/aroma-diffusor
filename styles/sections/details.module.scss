@@ -1,0 +1,249 @@
+@use "../variables" as *;
+@use "sass:color";
+
+.details {
+  position: relative;
+  padding: clamp(2rem, 5vw, 4rem) 20px;
+  background: $white;
+  color: rgb(46, 54, 62);
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: clamp(40px, 8vw, 100px);
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .videoWrapper {
+    width: clamp(280px, 50%, 500px);
+    height: clamp(300px, 50vw, 585px);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .content {
+    width: clamp(280px, 50%, 600px);
+    text-align: left;
+  }
+
+  .title {
+    font-size: clamp(24px, 4vw, 38px);
+    font-weight: 700;
+    line-height: 1.2;
+    max-width: 670px;
+    margin-bottom: clamp(15px, 3vw, 30px);
+  }
+
+  .description {
+    font-size: clamp(16px, 2vw, 20px);
+    font-weight: 400;
+    line-height: 1.5;
+    max-width: 670px;
+    margin-bottom: clamp(20px, 4vw, 50px);
+  }
+
+  .features {
+    display: flex;
+    justify-content: center;
+    gap: clamp(20px, 6vw, 130px);
+    flex-wrap: wrap;
+    margin: 0;
+
+    .feature {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      max-width: 200px;
+
+      img {
+        width: clamp(40px, 5vw, 64px);
+        height: clamp(40px, 5vw, 64px);
+        margin-bottom: 10px;
+      }
+
+      p {
+        font-size: clamp(14px, 2vw, 18px);
+        font-weight: 400;
+        line-height: 1.5;
+      }
+    }
+  }
+
+  /** 🔹 Промо-текст */
+  .promoText {
+    font-size: clamp(16px, 3vw, 20px);
+    font-weight: 700;
+    text-align: center;
+    line-height: 1.4;
+    margin: 0;
+    max-width: 100%;
+    color: #ff0101;
+  }
+
+  /* 📱 Адаптація для мобільних (до 600px) */
+  @media (max-width: 600px) {
+    .promoText {
+      display: flex;
+      flex-direction: column; // Переносить текст у два рядки
+      font-size: clamp(14px, 4vw, 18px);
+      text-align: center;
+      line-height: 1.5;
+      max-width: 100%;
+    }
+
+    .button {
+      width: clamp(260px, 80vw, 320px);
+      height: clamp(55px, 8vw, 65px);
+      font-size: clamp(18px, 2.5vw, 22px);
+      padding: clamp(15px, 3vw, 25px) clamp(25px, 4vw, 40px);
+    }
+  }
+
+  @media (max-width: 480px) {
+    .button {
+      width: clamp(240px, 85vw, 300px);
+      height: clamp(50px, 7vw, 60px);
+      font-size: clamp(16px, 2.2vw, 20px);
+    }
+  }
+
+  @media (max-width: 360px) {
+    .button {
+      width: clamp(220px, 90vw, 280px);
+      height: clamp(45px, 6vw, 55px);
+      font-size: clamp(15px, 2vw, 18px);
+    }
+  }
+
+  /** 🔹 Блок ціни + кнопки */
+  .priceContainer {
+    display: flex;
+    align-items: center;
+    gap: clamp(20px, 5vw, 50px);
+    margin-top: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .discount {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .oldPrice {
+    font-size: clamp(16px, 2vw, 18px);
+    font-weight: 600;
+    text-decoration: line-through;
+    color: #7d7d7d;
+    margin-bottom: -5px;
+  }
+
+  .newPrice {
+    font-size: clamp(24px, 3vw, 32px);
+    font-weight: 800;
+    color: #ff0101;
+    margin: 0;
+  }
+
+  /** 🔥 КНОПКА "ХОЧУ ЗНИЖКУ!" */
+  .buttonWrapper {
+    position: relative;
+    display: inline-block;
+  }
+
+  .button {
+    background: $yellow;
+    color: $black;
+    font-size: clamp(16px, 2vw, 20px);
+    font-weight: 800;
+    padding: clamp(15px, 3vw, 30px) clamp(20px, 4vw, 50px);
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: clamp(180px, 25vw, 230px);
+    height: clamp(45px, 6vw, 65px);
+    font-family: 'montserrat', sans-serif;
+    box-shadow: 0px 4px 10px rgba(255, 223, 0, 0.2);
+
+    &:hover {
+      background: color.adjust($yellow, $lightness: -10%);
+      box-shadow: 0px 6px 15px rgba(255, 223, 0, 0.4);
+    }
+  }
+
+  /** 🔥 Банер "Знижка 47%" */
+  .discountTag {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    background: rgba(255, 0, 0, 0.8);
+    color: $white;
+    font-size: clamp(12px, 1.5vw, 14px);
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 5px;
+    text-transform: uppercase;
+    animation: blink 1.5s infinite alternate ease-in-out;
+  }
+
+  /** 📱 Адаптація для планшетів (до 1024px) */
+  @media (max-width: 1024px) {
+    .container {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: clamp(20px, 5vw, 50px);
+    }
+
+    .videoWrapper {
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+    }
+
+    .content {
+      width: 100%;
+      text-align: center;
+    }
+
+    .features {
+      justify-content: center;
+      gap: clamp(15px, 4vw, 30px);
+    }
+
+    .priceContainer {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .buttonWrapper {
+      margin-top: 10px;
+    }
+
+    .discountTag {
+      top: -10px;
+      right: -10px;
+      font-size: 12px;
+      padding: 4px 10px;
+    }
+  }
+}

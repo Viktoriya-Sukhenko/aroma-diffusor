@@ -1,0 +1,132 @@
+@use "sass:color";
+@use "../variables" as *;
+
+.callToAction {
+  position: relative;
+  padding: 80px 20px; // Фіксований відступ
+  text-align: center;
+  background: $white;
+  color: rgb(46, 54, 62);
+
+  .container {
+    max-width: 1172px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px; // Відступ між елементами
+  }
+
+  .title {
+    font-size: 38px;
+    font-weight: 700;
+    line-height: 1.2;
+    text-align: center;
+    max-width: 731px;
+    margin-bottom: 25px;
+  }
+
+  .description {
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 1.5;
+    text-align: center;
+    width: 100%;
+    max-width: 1172px;
+    margin-bottom: 25px;
+  }
+
+  .button {
+    background: $yellow;
+    color: $black;
+    font-size: 22px;
+    font-weight: 700;
+    padding: 20px 40px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 280px; // Фіксована ширина
+    height: 70px; // Фіксована висота
+    font-family: 'montserrat', sans-serif;
+    margin-top: 20px;
+
+    &:hover {
+      background: color.scale($yellow, $lightness: -10%);
+    }
+  }
+}
+
+/* 📱 Адаптація для планшетів (до 900px) */
+@media (max-width: 900px) {
+  .callToAction {
+    padding: 60px 15px;
+
+    .title {
+      max-width: 90%;
+      font-size: 30px;
+    }
+
+    .description {
+      max-width: 90%;
+      font-size: 18px;
+    }
+
+    .button {
+      width: 250px;
+      height: 60px;
+      font-size: 18px;
+      padding: 18px 35px;
+    }
+  }
+}
+
+/* 📱 Адаптація для мобільних (до 600px) */
+@media (max-width: 600px) {
+  .callToAction {
+    padding: 50px 10px;
+
+    .title {
+      font-size: 26px;
+      max-width: 100%;
+      margin: 0;
+    }
+
+    .description {
+      font-size: 16px;
+    }
+
+    .button {
+      width: 220px;
+      height: 55px;
+      font-size: 16px;
+      padding: 16px 30px;
+    }
+  }
+}
+
+/* 📱 Додаткова адаптація для дуже малих екранів (до 400px) */
+@media (max-width: 400px) {
+  .callToAction {
+    padding: 40px 10px;
+
+    .title {
+      font-size: 24px;
+      margin: 0;
+    }
+
+    .description {
+      font-size: 14px;
+    }
+
+    .button {
+      width: 200px;
+      height: 50px;
+      font-size: 14px;
+      padding: 14px 25px;
+    }
+  }
+}
