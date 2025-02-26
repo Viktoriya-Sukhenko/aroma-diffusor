@@ -86,7 +86,7 @@ const Reviews = () => {
               }`}
             >
               <div className={styles.content}>
-                <img src="/icons/quote.svg" alt="Quotes" className={styles.quoteIcon} />
+                <img src="/icons/Quote.svg" alt="Quotes" className={styles.quoteIcon} />
                 {/* Цитата у лапках */}
                 <p className={styles.shortQuote}>“{review.shortQuote}”</p>
                 {/* Основний текст без лапок */}
