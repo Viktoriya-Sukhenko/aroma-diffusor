@@ -52,7 +52,7 @@
     font-weight: 400;
     line-height: 1.5;
     max-width: 670px;
-    margin-bottom: clamp(20px, 4vw, 50px);
+    margin-bottom: clamp(20px, 2vw, 50px);
   }
 
   .features {
@@ -179,7 +179,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: clamp(180px, 25vw, 230px);
+    width: clamp(180px, 25vw, 270px);
     height: clamp(45px, 6vw, 65px);
     font-family: 'montserrat', sans-serif;
     box-shadow: 0px 4px 10px rgba(255, 223, 0, 0.2);
@@ -190,60 +190,192 @@
     }
   }
 
-  /** 🔥 Банер "Знижка 47%" */
-  .discountTag {
-    position: absolute;
-    top: -10px;
-    right: -10px;
-    background: rgba(255, 0, 0, 0.8);
-    color: $white;
-    font-size: clamp(12px, 1.5vw, 14px);
-    font-weight: 700;
-    padding: 4px 10px;
-    border-radius: 5px;
-    text-transform: uppercase;
-    animation: blink 1.5s infinite alternate ease-in-out;
+ /** 🔥 Банер "Знижка 47%" */
+.discountTag {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  background: rgba(255, 0, 0, 0.8);
+  color: $white;
+  font-size: clamp(12px, 1.5vw, 14px);
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 5px;
+  text-transform: uppercase;
+  animation: pulse 1.5s infinite alternate ease-in-out;
+  box-shadow: 0px 0px 10px rgba(255, 0, 0, 0.6);
+  border: 2px solid rgba(255, 0, 0, 0.8);
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0px 0px 10px rgba(255, 0, 0, 0.6);
+  }
+  100% {
+    transform: scale(1.1);
+    box-shadow: 0px 0px 20px rgba(255, 0, 0, 1);
+  }
+}
+/** 📱 Адаптація для планшетів (1024px - 768px) */
+@media (max-width: 1024px) {
+  .container {
+    width: 100%;
+    max-width: 90vw; // ✅ Додає відступи від країв
+    margin: 0 auto; // ✅ Центрує контейнер по горизонталі
+    padding: 0 20px; // ✅ Додає внутрішні відступи
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
   }
 
-  /** 📱 Адаптація для планшетів (до 1024px) */
-  @media (max-width: 1024px) {
-    .container {
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      gap: clamp(20px, 5vw, 50px);
-    }
-
-    .videoWrapper {
-      width: 100%;
-      max-width: 100%;
-      height: auto;
-    }
-
-    .content {
-      width: 100%;
-      text-align: center;
-    }
-
-    .features {
-      justify-content: center;
-      gap: clamp(15px, 4vw, 30px);
-    }
-
-    .priceContainer {
-      flex-direction: column;
-      align-items: center;
-    }
-
-    .buttonWrapper {
-      margin-top: 10px;
-    }
-
-    .discountTag {
-      top: -10px;
-      right: -10px;
-      font-size: 12px;
-      padding: 4px 10px;
-    }
+  .videoWrapper {
+    width: 100%;
+    max-width: 600px;
+    height: auto;
   }
+
+  .content {
+    width: 100%;
+    max-width: 90%; // ✅ Обмежує ширину для кращого центрування
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .features {
+    justify-content: center;
+    gap: clamp(15px, 4vw, 30px);
+  }
+
+  .priceContainer {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .buttonWrapper {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .button {
+    width: clamp(200px, 80vw, 240px);
+    height: clamp(50px, 7vw, 70px);
+  }
+}
+
+/** 📱 Адаптація для мобільних (768px - 600px) */
+@media (max-width: 768px) {
+  .container {
+    width: 100%;
+    max-width: 90vw;
+    margin: 0 auto;
+    padding: 0 15px; // ✅ Додаємо відступи по боках
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .videoWrapper {
+    width: 100%;
+    max-width: 450px;
+  }
+
+  .content {
+    width: 100%;
+    max-width: 100%;
+    text-align: center;
+    align-items: center;
+  }
+
+  .title {
+    font-size: clamp(22px, 5vw, 28px);
+    max-width: 100%;
+  }
+
+  .description {
+    font-size: clamp(16px, 4vw, 18px);
+    max-width: 100%;
+  }
+
+  .priceContainer {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .buttonWrapper {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+}
+
+/** 📱 Додаткові зміни для маленьких мобільних (до 480px) */
+@media (max-width: 480px) {
+  .container {
+    padding: 0 15px;
+  }
+
+  .videoWrapper {
+    width: 100%;
+    max-width: 320px;
+  }
+
+  .content {
+    text-align: center;
+    align-items: center;
+  }
+
+  .title {
+    font-size: clamp(20px, 5vw, 24px);
+    margin-bottom: 15px;
+  }
+
+  .description {
+    font-size: clamp(14px, 4vw, 16px);
+    margin-bottom: 15px;
+    line-height: 1.4;
+  }
+
+  .features {
+    gap: 20px;
+  }
+
+  .priceContainer {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .button {
+    width: clamp(180px, 85vw, 250px);
+    height: clamp(70px, 7vw, 70px);
+    font-size: clamp(14px, 2.5vw, 16px);
+    padding: clamp(10px, 2vw, 15px);
+    margin-top: 10px;
+  }
+}
+
+/** 📱 Додаткові зміни для найменших екранів (до 360px) */
+@media (max-width: 360px) {
+  .title {
+    font-size: clamp(18px, 5vw, 22px);
+  }
+
+  .description {
+    font-size: clamp(13px, 3.5vw, 15px);
+  }
+
+  .button {
+    width: clamp(160px, 90vw, 240px);
+    height: clamp(40px, 6vw, 50px);
+    font-size: clamp(13px, 2vw, 15px);
+  }
+}
 }
