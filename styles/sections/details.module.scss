@@ -274,7 +274,7 @@
     width: 100%;
     max-width: 90vw;
     margin: 0 auto;
-    padding: 0 15px; // ✅ Додаємо відступи по боках
+    padding: 0; // ✅ Додаємо відступи по боках
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -319,7 +319,7 @@
 /** 📱 Додаткові зміни для маленьких мобільних (до 480px) */
 @media (max-width: 480px) {
   .container {
-    padding: 0 15px;
+    padding: 0;
   }
 
   .videoWrapper {
