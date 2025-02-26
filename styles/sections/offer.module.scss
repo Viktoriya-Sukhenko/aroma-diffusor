@@ -3,7 +3,7 @@
 
 .offer {
   position: relative;
-  padding: 0 0 clamp(5rem, 8vw, 10rem);
+  padding: 0 0 clamp(30px, 8vw, 70px);
   background: url("/images/bckg1.png") no-repeat center center;
   background-size: cover;
   background-position: center;
@@ -107,7 +107,7 @@
   // ✅ Адаптивный туман
   .fog {
     position: absolute;
-    bottom: -1rem;
+    bottom: -5px;
     left: 0;
     width: 100%;
     height: clamp(15vh, 25vh, 35vh);
@@ -119,14 +119,11 @@
 }
 @media (max-width: 900px) {
   .offer {
-    padding: clamp(3rem, 6vw, 4rem) clamp(1rem, 3vw, 2rem);
+    padding: 0 clamp(1rem, 3vw, 2rem);
     background: url("/images/bckg1-mobile.png") no-repeat center center;
     background-size: cover;
     background-attachment: scroll;
-    min-height: 90vh;
     display: flex;
-    align-items: center; // Центруємо по вертикалі
-    justify-content: center; // Центруємо по горизонталі
     text-align: center;
     position: relative;
 

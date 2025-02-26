@@ -49,7 +49,7 @@
 
   .card {
     max-width: 100%;
-    height: clamp(120px, 14vw, 140px);
+    height: auto;
     padding: clamp(15px, 3vw, 20px);
     border-radius: 10px;
     text-align: left;
@@ -62,13 +62,14 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 
     h3 {
-      font-size: clamp(18px, 3vw, 22px);
+      font-size: clamp(16px, 2.5vw, 22px);
       font-weight: 700;
       margin-bottom: 5px;
     }
 
     p {
-      font-size: clamp(14px, 2vw, 16px);
+      font-size: clamp(12px, 2vw, 16px);
+      line-height: 1.4;
     }
   }
 
@@ -130,67 +131,66 @@
       margin: 0 auto;
       text-align: center;
       align-items: center;
-      padding: clamp(20px, 4vw, 30px);
+      padding: clamp(12px, 3vw, 20px);
+
+      h3 {
+        font-size: clamp(14px, 2.2vw, 20px);
+        margin-bottom: 4px;
+      }
+  
+      p {
+        font-size: clamp(11px, 1.8vw, 14px);
+      }
     }
   }
   
   /** 📱 Адаптація для мобільних (до 600px) */
 @media (max-width: 600px) {
-    background: url("/images/bckg2-mobile.png") no-repeat center top;
+    background: url("/images/bckg2-mobile.png") no-repeat center center;
     background-size: cover;
-    background-attachment: scroll;
-    min-height: auto; // Дозволяє секції збільшуватися по висоті
-    padding: clamp(80px, 15vw, 120px) 0;
+    min-height: auto; // Убираем минимальную высоту
+    height: auto; // Позволяем секции подстраиваться под контент
+    padding: clamp(40px, 6vw, 80px) 0;
 
     .container {
+      padding: 0 clamp(15px, 3vw, 25px);
+      min-height: 100%; // Контейнер займет всю доступную высоту
+      display: flex;
       flex-direction: column;
-      align-items: center;
-      text-align: center;
-      max-width: 90%;
-      margin: 600px 0 200px; // ✅ Опускаємо контейнер на 500px
+      justify-content: center;
     }
 
     .contentContainer {
       width: 100%;
-      text-align: center;
+      padding: clamp(20px, 4vw, 40px) 0;
     }
 
     .grid {
       grid-template-columns: 1fr;
-      gap: 20px;
-      padding: 0 15px;
-    }
-
-    .title {
-      margin-bottom: clamp(20px, 10vw, 50px);
-      text-align: center;
+      gap: clamp(15px, 3vw, 25px);
     }
 
     .card {
-      max-width: 90%;
+      width: 92%;
       margin: 0 auto;
-      padding: clamp(8px, 1vw, 15px) clamp(12px, 4vw, 20px);
-      text-align: center;
-      align-items: center;
-      backdrop-filter: blur(50px);
-  
+      padding: clamp(15px, 3vw, 25px);
+      background: rgba(31, 48, 6, 0.08);
+      backdrop-filter: blur(100px);
+
       h3 {
-        font-size: clamp(18px, 4vw, 22px);
+        font-size: clamp(17px, 2.5vw, 20px);
+        margin-bottom: 8px;
+        max-width: 90%;
+        margin-left: auto;
+        margin-right: auto;
       }
-  
+
       p {
-        font-size: clamp(14px, 3vw, 16px);
+        font-size: clamp(13px, 1.8vw, 15px);
+        max-width: 90%;
+        margin-left: auto;
+        margin-right: auto;
       }
-    }
-    
-    .fogTop {
-      top: -70px;
-      background-position: top;
-    }
-    
-    .fogBottom {
-      bottom: -5px;
-      background-position: bottom;
     }
   }
   
@@ -280,7 +280,7 @@
 /* Маленькие мобильные */
 @media (max-width: 480px) {
   .whyUs {
-    padding: 100px 10px 20px;
+    padding: 100px 10px;
     background-size: 150%;
 
     .container {
@@ -288,22 +288,30 @@
     }
 
     .grid {
-      gap: 14px;
+      gap: 10px;
+    }
+
+    .fogTop {
+      top: -30px;
+    }
+
+    .fogBottom {
+      bottom: -20px;
     }
 
     .card {
-      width: 94%;
-      padding: 16px;
+      width: 95%;
+      padding: clamp(10px, 2.5vw, 15px);
       height: auto;
 
       h3 {
-        font-size: 18px;
-        margin-bottom: 6px;
+        font-size: clamp(13px, 2vw, 18px);
+        margin: 10px 0;
       }
 
       p {
-        font-size: 13px;
-        line-height: 1.3;
+        font-size: clamp(10px, 1.6vw, 13px);
+        margin: 0 0 10px;
       }
     }
   }

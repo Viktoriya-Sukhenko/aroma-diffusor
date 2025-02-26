@@ -158,6 +158,8 @@
 // 📱 Адаптація для планшетів (до 960px)
 @media (max-width: 960px) {
   .reviews {
+    padding: 0;
+    margin: 20px 0 30px;
     .card {
       flex-direction: column;
       text-align: center;
